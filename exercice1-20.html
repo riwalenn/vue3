@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Afficher du code HTML conditionnellement</title>
+</head>
+<body>
+    <h1>Afficher du code HTML conditionnellement</h1>
+    <!-- <div v-if="cond1"> -->
+    <!--    contenu 1 -->
+    <!-- </div> -->
+    <!-- <div v-else-if="cond2"> -->
+    <!--    contenu 2 -->
+    <!-- </div> -->
+    <!-- <div v-else="cond3"> -->
+    <!--    contenu 3 -->
+    <!-- </div> -->
+    <!-- <div v-else> -->
+    <!--    contenu 4 -->
+    <!-- </div> -->
+    <div id="app">
+        <p>Quels langages de programmation connaissez-vous ?</p>
+        <input type="text" v-model="unLang" autofocus>
+        <input type="button" value="Valider" @click="ajouter">
+        <div v-for="lan in langages">
+            <input type="checkbox" v-model="lan.etat">{{lan.lang}}<span v-if="lan.etat"> est cochée</span><span v-else> est décochée</span>
+            <!-- contrairement à la directive v-if, la directive v-show est toujours dans le DOM
+                 si la condition faut false la propriété css display par default est mise à none -->
+        </div>
+        <hr>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    unLang: '',
+                    langages: []
+                }
+            },
+            methods: {
+                ajouter() {
+                    this.langages.push(
+                        {
+                            lang: this.unLang,
+                            etat: false
+                        }
+                    );
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>

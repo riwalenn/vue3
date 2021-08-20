@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>stop & prevent de Vue</title>
+</head>
+<body>
+    <h1>stop & prevent de Vue</h1>
+    <div id="app">
+        <div @keydown="actionParent">
+            <input type="text" @keydown.prevent.stop="action($event)">
+            <button @click.once="action">test</button>
+            <input type="text" @keyup.code="action">
+            <!-- enter, tab, delete, space, esc, up, down, right, left... -->
+            <img src="../public/img/mockups/desktop.png" alt="image" v-bind:width="valeur" @click.left="largeur(200)" @click.right="largeur(100)" @click.middle="largeur(400)">
+        </div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+              return {
+                  valeur: 300
+              }
+            },
+            methods: {
+                action(e) {
+                    console.log('Evènement traité dans le input');
+                },
+                actionParent() {
+                    console.log('Evènement traité dans le parent');
+                },
+                largeur(data) {
+                    this.valeur = data;
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>

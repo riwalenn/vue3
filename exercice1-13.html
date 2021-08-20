@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Arguments dynamiques</title>
+</head>
+<body>
+    <h1>Arguments dynamiques</h1>
+    <div id="app">
+
+<!--        <element v-on:[evenement]="traitement"></element> ici évènement dynamique-->
+<!--        <element v-bind:[attribut]="valeur"></element> ici attribut dynamique -->
+        <p><img src="../public/img/mockups/desktop.png" :width="valeur" @[choice]="newWidth"></p>
+        <label>clic</label><input type="radio" value="click" v-model="choice" checked>
+        <label>double clic</label><input type="radio" value="dblclick" v-model="choice">
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    valeur: 200,
+                    choice: 'clic'
+                }
+            },
+            methods: {
+                newWidth() {
+                    this.valeur = this.valeur * 1.1
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>

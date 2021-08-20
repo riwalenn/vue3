@@ -1,0 +1,45 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Directive v-for & objets JSON</title>
+</head>
+<body>
+<h1>Directive v-for & objets JSON</h1>
+<div id="app">
+    <ul v-for="personne in personnes">
+        <li>{{ personne.prenom }} {{ personne.nom }} {{ personne.age }}</li>
+    </ul>
+</div>
+<script>
+    const app = Vue.createApp({
+        data() {
+            return {
+                personnes: [
+                    {
+                        prenom: 'Pierric',
+                        nom: 'Martin',
+                        age: 24
+                    },
+                    {
+                        prenom: 'Jeanine',
+                        nom: 'Martin',
+                        age: 30
+                    },
+                    {
+                        prenom: 'Ever',
+                        nom: 'Harmaan',
+                        age: 27
+                    }
+                ]
+            }
+        }
+    });
+    app.mount('#app');
+</script>
+</body>
+</html>

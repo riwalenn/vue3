@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Gestion évènementielle</title>
+</head>
+<body>
+    <div id="app">
+        <h1>Gestion évènementielle</h1>
+        <p>Nombre de clics sur le bouton : {{compteur}}</p>
+        <button v-model="compteur" v-on:click="compteurIncrement">Incrémenter le compteur</button><br>
+        <button @click="compteur++">Incrémenter le compteur sans methode</button>
+        <hr>
+        <label>Entrez votre prénom</label>
+        <input type="text" v-model="prenom">
+        <button @click="bonjour('Bonjour')">Cliquez ici</button>
+        <button @click="bonjour('Hello')">Dis Hello</button>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    compteur: 0,
+                    prenom: ''
+                }
+            },
+            methods: {
+                compteurIncrement() {
+                    return this.compteur++;
+                },
+                bonjour(texte) {
+                    return alert(texte + " " + this.prenom);
+                }
+            }
+
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>

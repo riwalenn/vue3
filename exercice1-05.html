@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>innerHtml et noeud texte</title>
+</head>
+<body>
+    <h1>innerHtml et noeud texte</h1>
+    <div id="app">
+        <p v-text="texteBrut"></p>
+        <p v-html="texteHtml"></p>
+        <p>Nom : <span v-text="personne.nom"></span></p>
+        <p>Prénom : <span v-text="personne.prenom"></span></p>
+        <p>Age : <span v-text="personne.age"></span></p>
+        <p><span>{{hms}}</span></p>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    texteBrut: 'Simple texte !',
+                    texteHtml: '<u style="color: red">Texte rouge souligné</u>',
+                    personne: {
+                        prenom: 'John',
+                        nom: 'Doe',
+                        age: '20'
+                    },
+                    hms: ''
+                }
+            }
+        });
+        const vm = app.mount('#app');
+        vm.personne.prenom = 'Jane';
+        setTimeout(() => { vm.personne.age = 25 }, 3000);
+        setInterval(() => {
+            vm.hms = new Date().toLocaleTimeString();
+        }, 1000);
+    </script>
+</body>
+</html>

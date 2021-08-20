@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Gestion évènementielle : objet $event</title>
+</head>
+<body>
+    <h1>Gestion évènementielle : objet $event</h1>
+    <div id="app">
+        <img src="../public/img/mockups/desktop.png" alt="" @mousemove="coords($event)">
+        <p>{{xy}}</p>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    xy: ''
+                }
+            },
+            methods: {
+                coords(e) {
+                    this.xy = 'x = ' + e.offsetX + ', y = ' + e.offsetY;
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Gestion des styles inline</title>
+</head>
+<body>
+    <h1>Gestion des styles inline</h1>
+    <!-- v-bind:style = "{ pcss1: pmodel1, pcss2: pmodel2, pcss3: pmodel3, ...}" -->
+    <div id="app">
+        <label>Couleur</label>
+        <select v-model="couleur">
+            <option value="black" selected>noir</option>
+            <option value="red">rouge</option>
+            <option value="blue">bleu</option>
+            <option value="green">vert</option>
+        </select>
+        <label>Taille</label>
+        <select v-model="taille">
+            <option value="16px" selected>16 px</option>
+            <option value="25px">25 px</option>
+            <option value="40px">40 px</option>
+            <option value="60px">60 px</option>
+        </select>
+        <p :style="{color:couleur, fontSize:taille}">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.<br>
+            Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.<br>
+            Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur.<br>
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    couleur: '',
+                    taille: ''
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>

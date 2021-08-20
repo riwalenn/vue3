@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>stopPropagation & preventDefault</title>
+</head>
+<body>
+    <h1>stopPropagation & preventDefault</h1>
+    <div id="app">
+        <div @keydown="actionParent"><input type="text" @keydown="action($event)"></div>
+        <p><a href="https://www.bing.fr" @click="linkBing($event)" target="_blank">Bing</a></p>
+        <p><a href="https://www.google.fr" target="_blank">Google</a></p>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            methods: {
+                action(e) {
+                    console.log('Evènement traité dans le input');
+                     e.preventDefault(); //empêche le traitement par default
+                     e.stopPropagation(); //stop la propagation au parent
+                },
+                linkBing(e) {
+                    e.preventDefault();
+                },
+                actionParent() {
+                    console.log('Evènement traité dans le parent');
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>

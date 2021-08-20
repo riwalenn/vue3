@@ -1,0 +1,25 @@
+{
+  "name": "riwalenn-v2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint --ext .js,.vue --ignore-path .gitignore ./",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/riwalenn/riwalenn-v2.git"
+  },
+  "author": "Riwalenn Bas",
+  "bugs": {
+    "url": "https://github.com/riwalenn/riwalenn-v2/issues"
+  },
+  "engines": {
+    "node": "^14.17.5",
+    "npm": "^6.14.14"
+  },
+  "dependencies": {
+    "vue": "^3.2.2"
+  }
+}

@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>exercice 1</title>
+</head>
+<body>
+    <h1>Variables et squelette</h1>
+    <div id="app">
+<!--        <h2>{{titre}}</h2>
+        <p>{{sousTitre}}</p>-->
+        <p>Il est exactement {{date}}</p>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    titre: 'Ma première application Vue 3',
+                    sousTitre: 'mon sous-titre !',
+                    date: new Date().toLocaleTimeString()
+                }
+            },
+            // template: `<h2>test</h2>
+            //            <p>... test ...</p>`
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>

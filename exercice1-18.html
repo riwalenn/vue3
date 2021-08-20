@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Classes conditionnelles</title>
+    <style>
+        .rouge {
+            color: red;
+        }
+        li {
+            list-style-type: none;
+        }
+        .g {
+            font-weight: bold;
+        }
+        .i {
+            font-style: italic;
+        }
+        .s {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <h1>Classes conditionnelles</h1>
+        <!-- v-bind:class="{ classe: valeur }" si valeur vaut true alors la classe est appliquée -->
+        <p>Quels langages de programmation connaissez-vous ?</p>
+        <input type="text" v-model="unLang" autofocus>
+        <input type="button" value="Valider" @click="ajouter">
+        <div v-for="lan in langages">
+            <input type="checkbox" v-model="lan.etat"><span :class="{rouge:lan.etat}">{{lan.lang}}</span>
+        </div>
+        <hr>
+        <input type="checkbox" v-model="gras">Gras
+        <input type="checkbox" v-model="italique">Italique
+        <input type="checkbox" v-model="souligne">Souligné <br>
+        <div :class="{g:gras, i:italique, s:souligne}">Un peu de texte dans le div</div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    unLang: '',
+                    langages: [],
+                    gras: false,
+                    italique: false,
+                    souligne: false
+                }
+            },
+            methods: {
+                ajouter() {
+                    this.langages.push(
+                        {
+                            lang: this.unLang,
+                            etat: false
+                        }
+                    );
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Directive v-once</title>
+</head>
+<body>
+<!-- si l'on souhaite qu'un élément ne soit affiché qu'une seule fois
+     et que les mises à jour ne soient pas affichées dans la page -->
+    <h1>Directive v-once</h1>
+    <div id="app">
+        <p>{{nombre}}</p>
+        <p v-once>{{nombre}}</p>
+        <input type="button" value="cliquez ici" @click="click">
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    nombre: 15
+                }
+            },
+            methods: {
+                click() {
+                    this.nombre++;
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>

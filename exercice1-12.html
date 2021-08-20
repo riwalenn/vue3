@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>directive v-for</title>
+</head>
+<body>
+    <h1>directive v-for</h1>
+    <div id="app">
+        <p>Quels langages de programmation connaissez-vous ?</p>
+        <input type="text" v-model="unLang">
+        <input type="button" value="Valider" @click="ajouter">
+        <h5>sans index</h5>
+        <ul>
+            <li v-for="lan in langages">{{lan}}</li>
+        </ul>
+        <h5>avec index</h5>
+        <ul>
+            <li v-for="(lan, index) in langages">{{index}} : {{lan}}</li>
+        </ul>
+        <div v-for="(element, i) in elems">
+            {{element}}
+            <button @click="supprimer(i)">Supprimer</button>
+        </div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    unLang: '',
+                    langages: [],
+                    elems: ['premier', 'deuxième', 'troisième', 'quatrième']
+                }
+            },
+            methods: {
+                ajouter() {
+                    this.langages.push(this.unLang);
+                },
+                supprimer(i) {
+                    this.elems.splice(i, 1);
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>

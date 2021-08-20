@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>v-model & v-bind</title>
+</head>
+<body>
+    <h1>v-model & v-bind</h1>
+    <div id="app">
+        <input type="text" v-model="texte1" v-on:keyup="recopie">
+        <input type="text" v-bind:value="texte2">
+        <hr>
+        <p>Cochez les cases de langages que vous connaissez :</p>
+        <label>HTML</label>
+        <input type="checkbox" v-model="cases" value="html">
+        <label>CSS</label>
+        <input type="checkbox" v-model="cases" value="css">
+        <label>Javascript</label>
+        <input type="checkbox" v-model="cases" value="javascript">
+        <p>Cases cochées : {{cases}}</p>
+        <hr>
+        <label>HTML</label>
+        <input type="radio" v-model="radio" value="html">
+        <label>CSS</label>
+        <input type="radio" v-model="radio" value="css">
+        <label>Javascript</label>
+        <input type="radio" v-model="radio" value="javascript">
+        <p>Language préféré : {{radio}}</p>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    texte1: '',
+                    texte2: '',
+                    cases: [],
+                    radio: ''
+                }
+            },
+            methods: {
+                recopie() {
+                    this.texte2 = this.texte1.toUpperCase();
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>

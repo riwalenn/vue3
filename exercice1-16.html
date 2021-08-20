@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Directive v-cloack</title>
+    <style>
+        [v-cloack] {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+<!-- si les accolades s'affichent sur la page, c'est parce qu'elle n'a pas encore été calculée
+ il faut utiliser la directive v-cloack et créer une feuille de style
+ avec l'argument [v-cloack]{ display: none; } pour supprimer les accolades -->
+    <div id="app">
+        <h1>Directive v-cloack</h1>
+        <div v-cloak>{{texte}}</div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    texte: 'Bonjour'
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>

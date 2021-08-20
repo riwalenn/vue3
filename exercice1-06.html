@@ -1,0 +1,40 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Binding bidirectionnel</title>
+</head>
+<body>
+    <h1>Binding bidirectionnel</h1>
+    <div id="app">
+        <input type="text" placeholder="Entrez votre nom" v-model="nom">
+        Bonjour {{nom}} <br>
+        <hr>
+        Vous avez choisi {{capitale}} <br>
+        <select name="capitales" id="capitales" v-model="capitale">
+            <option>Paris</option>
+            <option>Londres</option>
+            <option>Madrid</option>
+        </select>
+        <hr>
+        <textarea v-model="texteArea" aria-multiline="true"></textarea>
+        <div style="white-space: pre-line">{{texteArea}}</div>
+    </div>
+    <script>
+        const app = Vue.createApp({
+            data() {
+                return {
+                    nom: '',
+                    capitale: '',
+                    texteArea: ''
+                }
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>
