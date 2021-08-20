@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <script src="https://unpkg.com/vue@next"></script>
+    <title>Composant de type local</title>
+</head>
+<body>
+    <h1>Composant de type local</h1>
+    <div id="app">
+        <bonjour-loc />
+    </div>
+    <script>
+        const BonjourLocal = {
+            template: '<div>Le composant local dit bonjour</div>'
+        }
+        const app = Vue.createApp({
+            components: {
+                'bonjour-loc': BonjourLocal
+            }
+        });
+        app.mount('#app');
+    </script>
+</body>
+</html>
